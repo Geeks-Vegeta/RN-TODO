@@ -1,17 +1,28 @@
-import React from "react";
+import React, { useContext } from "react";
 import {StyleSheet, TouchableOpacity} from 'react-native';
 import { Checkbox } from 'react-native-paper';
+import { TaskProvider } from "./TaskContext";
 
 
 const Task=props=>{
 
+  const {task, setTask}= useContext(TaskProvider);
+
+  const removeElement=()=>{
+    setTask(data=>data.filter((val, id)=>{
+      return id!==props.press;
+    }))
+
+  }
+
+
+
 
     return (
         <>
-        <TouchableOpacity style={styles.button}>
-            <Checkbox.Item onPress={()=>console.log(props.press)} label={props.name} status="unchecked" />
-        </TouchableOpacity>
-
+          <TouchableOpacity  style={styles.button}>
+              <Checkbox.Item onPress={removeElement} label={props.name} status="unchecked" />
+          </TouchableOpacity>
         </>
     )
 }

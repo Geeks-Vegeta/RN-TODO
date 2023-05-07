@@ -1,50 +1,13 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useContext} from "react";
 import { Text, View } from "react-native";
 import { TextInput } from 'react-native-paper';
 import { Button } from 'react-native-paper';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { TaskProvider } from "../components/TaskContext";
 const Create=({navigation})=>{
     const [text, setText] = useState("");
-    const [task, setTask] = useState([]);
+    const {task, setTask} = useContext(TaskProvider);
 
-
-    useEffect(()=>{
-
-    
-        const getTodoData = async () => {
-    
-            try {
-              const jsonValue = await AsyncStorage.getItem('@TaskTodo');
-        
-              if(jsonValue===null){
-                //return again data to local storage
-                return [];
-                }
-                else{
-                //else reaturn empty data
-                    return JSON.parse(jsonValue);
-            }
-            } catch(e) {
-              // error reading value
-              console.log(e);
-            }
-          }
-
-        //   const clearAllData=()=> {
-        //     AsyncStorage.getAllKeys()
-        //         .then(keys => AsyncStorage.multiRemove(keys))
-        //         .then(() => alert('success'));
-        // }
-    
-          const setdatatolocal=async()=>{
-            let cc=await getTodoData();
-            setTask(cc);
-          }
-          setdatatolocal();
-        //   clearAllData();
-    
-      },[])
-    
 
 
     const storeData = async (value) => {
@@ -53,6 +16,9 @@ const Create=({navigation})=>{
         const jv = JSON.stringify(d);
         await AsyncStorage.setItem('@TaskTodo', jv);
         navigation.navigate('Home');
+        setTask((task)=>{
+          return [...task, {"task":value}]
+        })
         } catch (e) {
         // saving error
         }

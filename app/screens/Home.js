@@ -1,44 +1,14 @@
-import React,{ useEffect, useState } from "react";
-import { Text, ScrollView } from "react-native";
+import React,{ useContext, useEffect, useState } from "react";
+import {  ScrollView } from "react-native";
 import { StyleSheet } from 'react-native';
 import { FAB } from 'react-native-paper';
 import Task from "../components/Tasks";
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { TaskProvider } from "../components/TaskContext";
 
 
 const Home=({navigation})=>{
-    const [task, setTask] = useState([]);
+    const {task, setTask}=useContext(TaskProvider);
 
-    useEffect(()=>{
-
-    
-        const getTodoData = async () => {
-    
-            try {
-              const jsonValue = await AsyncStorage.getItem('@TaskTodo');
-        
-              if(jsonValue===null){
-                //return again data to local storage
-                return [];
-                }
-                else{
-                //else reaturn empty data
-                    return JSON.parse(jsonValue);
-            }
-            } catch(e) {
-              // error reading value
-              console.log(e);
-            }
-          }
-    
-          const setdatatolocal=async()=>{
-            let cc=await getTodoData();
-            setTask(cc);
-          }
-          setdatatolocal();
-    
-    
-      },[])
     return (
         <>
         <ScrollView>
@@ -47,7 +17,7 @@ const Home=({navigation})=>{
                 {task.map((data, idx)=>{
                     return (
                         <>
-                           <Task press={idx} key={idx} name={data.task}/>     
+                          <Task press={idx} key={idx} name={data.task}/>     
                         </>
                     )
                 })}

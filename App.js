@@ -3,6 +3,7 @@ import { Navigator } from "./app/navigations/Navigator";
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { MD3LightTheme as DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import TaskContext from './app/components/TaskContext';
 
 
 const theme = {
@@ -19,12 +20,14 @@ const theme = {
 export default function App() {
   return (
     <>
-    <PaperProvider theme={theme}>
-      <NavigationContainer theme={theme}>
-          <StatusBar />
-          <Navigator/>
-      </NavigationContainer>
-    </PaperProvider>
+    <TaskContext>
+      <PaperProvider theme={theme}>
+        <NavigationContainer theme={theme}>
+            <StatusBar />
+            <Navigator/>
+        </NavigationContainer>
+      </PaperProvider>
+    </TaskContext>
     </>
   );
 }
