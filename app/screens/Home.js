@@ -1,6 +1,5 @@
-import React,{ useContext, useEffect, useState } from "react";
-import {  ScrollView } from "react-native";
-import { StyleSheet } from 'react-native';
+import React,{ useContext } from "react";
+import { ScrollView,StyleSheet, Text, View } from 'react-native';
 import { FAB } from 'react-native-paper';
 import Task from "../components/Tasks";
 import { TaskProvider } from "../components/TaskContext";
@@ -11,24 +10,25 @@ const Home=({navigation})=>{
 
     return (
         <>
-        <ScrollView>
-            {task?(
-                <>
+            {task.length!==0?(
+                <ScrollView>
+
                 {task.map((data, idx)=>{
                     return (
                         <>
-                          <Task press={idx} key={idx} name={data.task}/>     
+                          <Task tas={true} press={idx} key={idx} name={data.task}/>     
                         </>
                     )
                 })}
-                </>
+                </ScrollView>
+
             ):(
-                <>
-                </>
+                <View style={{flex:1, justifyContent:"center",alignItems:'center'}}>
+                    <Text>No Task Yet</Text>
+                </View>
             )}
                        
          
-        </ScrollView>
         <FAB
             icon="plus"
             style={styles.fab}

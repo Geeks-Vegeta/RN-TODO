@@ -7,6 +7,8 @@ export const TaskProvider=createContext();
 const TaskContext=props=>{
 
     const [task, setTask] = useState([]);
+    const [history, setHistory] = useState([]);
+
 
     useEffect(()=>{
 
@@ -35,13 +37,39 @@ const TaskContext=props=>{
             setTask(cc);
           }
           setdatatolocal();
+
+
+          const getHistoryData = async () => {
+    
+            try {
+              const jsonValue = await AsyncStorage.getItem('@History');
+        
+              if(jsonValue===null){
+                //return again data to local storage
+                return [];
+                }
+                else{
+                //else reaturn empty data
+                    return JSON.parse(jsonValue);
+            }
+            } catch(e) {
+              // error reading value
+              console.log(e);
+            }
+          }
+    
+          const sethistorylocal=async()=>{
+            let cc=await getHistoryData();
+            setHistory(cc);
+          }
+          sethistorylocal();
     
     
       },[]);
 
     return (
         <>
-        <TaskProvider.Provider value={{task,setTask}}>
+        <TaskProvider.Provider value={{task,setTask, history, setHistory}}>
             {props.children}
         </TaskProvider.Provider>
         </>
