@@ -1,4 +1,4 @@
-# RN-TODO 🔥
+# React-Native-TODO-Application 🔥
 
 
 🪣 Created an simple todo app ✅ using react native with help of react local storage,
@@ -20,7 +20,7 @@ Use Expo app and Scan QR given below
 
 🎈 Clone your repo first.
 ```bash
-git clone https://github.com/Geeks-Vegeta/RN-TODO.git
+git clone https://github.com/Geeks-Vegeta/React-Native-TODO-Application.git
 ```
 
 
