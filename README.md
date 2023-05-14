@@ -1,7 +1,7 @@
-# RN-TODO
+# RN-TODO 🔥
 
 
-Created an simple todo app using react native with help of react local storage,
+🪣 Created an simple todo app ✅ using react native with help of react local storage,
 Here home page will keep track of all yours todo for today and history will keep track of all your done todo's
 <br/>
 
@@ -15,3 +15,21 @@ Use Expo app and Scan QR given below
 
 ![image](https://github.com/Geeks-Vegeta/RN-TODO/assets/89457811/cb1d7104-0218-4a88-bba2-5dcb603b294c)
 
+
+#### OR you can clone 🔥
+
+🎈 Clone your repo first.
+```bash
+git clone https://github.com/Geeks-Vegeta/RN-TODO.git
+```
+
+
+🎈 Install all dependencies
+```bash
+yarn add
+```
+
+🎈 Start application in local machine
+```bash
+yarn start
+```
