@@ -11,7 +11,7 @@ Here home page will keep track of all yours todo for today and history will keep
 
 <br/>
 
-Use Expo app and Scan QR given below
+#### Use Expo app and Scan QR given below
 
 ![image](https://github.com/Geeks-Vegeta/RN-TODO/assets/89457811/cb1d7104-0218-4a88-bba2-5dcb603b294c)
 
